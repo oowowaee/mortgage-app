@@ -2,17 +2,21 @@ import { useState } from 'react'
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import reactLogo from './assets/react.svg';
+import viteLogo from '/vite.svg';
+import { useTranslation } from 'react-i18next';
+import './i18n';
+
 import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+  const { t } = useTranslation();
 
   return (
     <>
       <AppBar position="static">
-        <Toolbar>Stuff</Toolbar>
+        <Toolbar>{t('appbar.title')}</Toolbar>
       </AppBar>
       <div>
         <a href="https://vitejs.dev" target="_blank">
