@@ -4,6 +4,7 @@ import Toolbar from '@mui/material/Toolbar';
 
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
+import GraphForm from './graph/form';
 import { useTranslation } from 'react-i18next';
 import './i18n';
 
@@ -26,6 +27,7 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
+      <GraphForm />
       <h1>Vite + React</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
