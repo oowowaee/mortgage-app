@@ -2,9 +2,9 @@ export const translations = {
   es: {
     translation: {
       appbar: {
-        title: "Welcome to React and react-i18next in Spanish",
+        title: "Una calculadora de hipotecas para controlar todas",
       },
-    }
+    },
   },
 };
 
