@@ -4,6 +4,14 @@ export const translations = {
       appbar: {
         title: "Una calculadora de hipotecas para controlar todas",
       },
+      form: {
+        term: {
+          title: 'Plazo (anos)'
+        },
+        interest: {
+          title: 'Interes Anual'
+        }
+      },
     },
   },
 };

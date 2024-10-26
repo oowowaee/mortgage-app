@@ -1,0 +1,13 @@
+.formWrapper {
+  border: 1px dashed grey;
+  display: inline-block;
+  padding: 16px;
+  border-radius: 6px;
+  background-color: aliceblue;
+}
+
+.MuiFormControl-root {
+  label {
+    text-transform: capitalize;
+  }
+}
