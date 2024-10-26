@@ -5,11 +5,22 @@ export const translations = {
         title: "One Mortgage Calculator to rule them all",
       },
       form: {
-        term: {
-          title: "Term (years)",
+        button: {
+          generate: "Generate",
         },
-        interest: {
-          title: "Annual Interest",
+        input: {
+          amount: {
+            title: "Amount",
+          },
+          term: {
+            title: "Term (years)",
+          },
+          interest: {
+            title: "Annual Interest",
+          },
+          overlay: {
+            title: "Overlay existing",
+          },
         },
       },
     },

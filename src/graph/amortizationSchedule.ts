@@ -2,14 +2,14 @@
 // Table broken down by year/monthly
 
 type paymentFrequency = 'monthly';
-type paymentDetail = {
-  monthNumber: number
-  interestPayment: number
-  principalPayment: number
-  balancePaid: number
-  remainingBalance: number
-  interestPaid: number
-}
+export type paymentDetail = {
+  monthNumber: number;
+  interestPayment: number;
+  principalPayment: number;
+  principalPaid: number;
+  remainingPrincipal: number;
+  interestPaid: number;
+};
 
 type amoritizationInformation = {
   paymentDetails: paymentDetail[]
@@ -51,28 +51,28 @@ export const calculateAmortizationSchedule = (
     monthlyInterestRate
   );
   const paymentDetails: paymentDetail[] = [];
-  let remainingBalance = loanAmount;
-  let balancePaid = 0;
+  let remainingPrincipal = loanAmount;
+  let principalPaid = 0;
   let interestPaid = 0;
 
   for (let i = 0; i < numberOfPayments; i++) {
     const interestPayment = calculateInterestPayment(
-      remainingBalance,
+      remainingPrincipal,
       monthlyInterestRate
     );
 
     const principalPayment = monthlyPayment - interestPayment;
 
     interestPaid += interestPayment;
-    balancePaid += principalPayment;
-    remainingBalance -= principalPayment;
+    principalPaid += principalPayment;
+    remainingPrincipal -= principalPayment;
 
     paymentDetails.push({
       monthNumber: i + 1,
       interestPayment: roundNumber(interestPayment),
       principalPayment: roundNumber(principalPayment),
-      balancePaid: roundNumber(balancePaid),
-      remainingBalance: roundNumber(remainingBalance),
+      principalPaid: roundNumber(principalPaid),
+      remainingPrincipal: roundNumber(remainingPrincipal),
       interestPaid: roundNumber(interestPaid),
     });
   }

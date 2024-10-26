@@ -48,3 +48,8 @@ export default tseslint.config({
   },
 })
 ```
+
+
+
+TODO:
+Add tabs for amortization

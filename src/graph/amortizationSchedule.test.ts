@@ -35,8 +35,8 @@ describe('monthly amortization schedule', () => {
       monthNumber: 1,
       interestPayment: 10.0,
       principalPayment: 330.02,
-      balancePaid: 330.02,
-      remainingBalance: 669.98,
+      principalPaid: 330.02,
+      remainingPrincipal: 669.98,
       interestPaid: 10.0,
     });
 
@@ -44,8 +44,8 @@ describe('monthly amortization schedule', () => {
       monthNumber: 2,
       interestPayment: 6.7,
       principalPayment: 333.32,
-      balancePaid: 663.34,
-      remainingBalance: 336.66,
+      principalPaid: 663.34,
+      remainingPrincipal: 336.66,
       interestPaid: 16.7,
     });
 
@@ -53,8 +53,8 @@ describe('monthly amortization schedule', () => {
       monthNumber: 3,
       interestPayment: 3.37,
       principalPayment: 336.66,
-      balancePaid: 1000.0,
-      remainingBalance: 0,
+      principalPaid: 1000.0,
+      remainingPrincipal: 0,
       interestPaid: 20.07,
     });
   });

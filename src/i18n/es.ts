@@ -5,12 +5,23 @@ export const translations = {
         title: "Una calculadora de hipotecas para controlar todas",
       },
       form: {
-        term: {
-          title: 'Plazo (anos)'
+        button: {
+          generate: "Generate",
         },
-        interest: {
-          title: 'Interes Anual'
-        }
+        input: {
+          amount: {
+            title: "Amount",
+          },
+          term: {
+            title: "Plazo (anos)",
+          },
+          interest: {
+            title: "Interes Anual",
+          },
+          overlay: {
+            title: "Overlay existing",
+          },
+        },
       },
     },
   },
