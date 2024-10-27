@@ -1,7 +1,8 @@
 // Can show different payment frequencies
 // Table broken down by year/monthly
 
-type paymentFrequency = 'monthly';
+import { paymentFrequency } from "./types";
+
 export type paymentDetail = {
   monthNumber: number;
   interestPayment: number;
@@ -37,13 +38,13 @@ const calculateInterestPayment = (balance: number, monthlyInterestRate: number) 
 }
 
 export const calculateAmortizationSchedule = (
-  interestRate: number,
+  yarlyInterestRate: number,
   loanAmount: number,
   months: number,
   frequency: paymentFrequency,
   payment?: number
 ): amoritizationInformation => {
-  const monthlyInterestRate = interestRate / 12;
+  const monthlyInterestRate = yarlyInterestRate / 12;
   const numberOfPayments = months;
   const monthlyPayment = calculateMonthlyPayment(
     loanAmount,

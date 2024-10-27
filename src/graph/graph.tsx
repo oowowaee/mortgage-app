@@ -5,12 +5,14 @@ import { LineChart } from '@mui/x-charts/LineChart';
 import { useTranslation } from 'react-i18next';
 import { blueberryTwilightPalette } from '@mui/x-charts/colorPalettes';
 
-console.log(blueberryTwilightPalette())
 import './form.scss'
+import { termUnit } from "./types.js";
 
-type GraphParams = {
+type GraphProps = {
+  amount: number
   term: number
   interest: number
+  termUnit: termUnit
 };
 
 const legendPlacement = {
@@ -27,27 +29,27 @@ const legendPlacement = {
   }
 } as const;
 
-export const Graph = ({ term = 30, interest = 0.0725 }: GraphParams) => {
+export const Graph = ({ amount, term, interest }: GraphProps) => {
   const { t } = useTranslation();
-
-  const schedule = calculateAmortizationSchedule(interest, 100000, term * 12, 'monthly');
+  console.log(amount, term, interest)
+  const schedule = calculateAmortizationSchedule(interest, amount, term * 12, 'monthly');
 
   return (
     <LineChart
       xAxis={[{ data: schedule.paymentDetails.map(d => d.monthNumber) }]}
       series={[
         {
-          label: "Principal Paid",
+          label: t('graph.label.principalPaid'),
           data: schedule.paymentDetails.map(d => d.principalPaid),
           showMark: false,
         },
         {
-          label: "Interest Paid",
+          label: t('graph.label.interestPaid'),
           data: schedule.paymentDetails.map(d => d.interestPaid),
           showMark: false,
         },
         {
-          label: "Principal Remaining",
+          label: t('graph.label.principalRemaining'),
           data: schedule.paymentDetails.map(d => d.remainingPrincipal),
           showMark: false,
         },

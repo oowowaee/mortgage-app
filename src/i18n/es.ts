@@ -4,6 +4,13 @@ export const translations = {
       appbar: {
         title: "Una calculadora de hipotecas para controlar todas",
       },
+      graph: {
+        label: {
+          principalPaid: 'Principal Paid',
+          interestPaid: 'Interest Paid',
+          principalRemaining: 'Principal Remaining'
+        }
+      },
       form: {
         button: {
           generate: "Generate",

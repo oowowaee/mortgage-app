@@ -1,4 +1,5 @@
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
+
 import Box from '@mui/material/Box';
 import TextField from '@/common/TextField';
 import Button from '@mui/material/Button';
@@ -8,25 +9,26 @@ import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 
 import './form.scss'
+import { termUnit } from "./types";
+
+type FormProps = {
+  defaultValues: FormData
+};
 
 type FormData = {
   amount: number
   term: number
   interest: number
-  overlay: boolean
+  termUnit: termUnit
+  overlay?: boolean
 };
 
-export const GraphForm = () => {
+export const GraphForm = ({ defaultValues }: FormProps) => {
   const {
-    control,
-    handleSubmit,
-    getValues
+    register,
+    handleSubmit
   } = useForm<FormData>({
-    defaultValues: {
-      amount: 200000,
-      term: 36,
-      interest: 7.25
-    }
+    defaultValues
   });
   const { t } = useTranslation();
   const [numGraphs, setNumGraphs] = useState(0);
@@ -37,26 +39,11 @@ export const GraphForm = () => {
     <Box component="section" className="formWrapper">
       <form onSubmit={onSubmit}>
         <Stack direction="column" spacing={2}>
-          <Controller
-            name="amount"
-            control={control}
-            render={({ field }) => <TextField {...field} />}
-          />
-          <Controller
-            name="term"
-            control={control}
-            render={({ field }) => <TextField {...field} />}
-          />
-          <Controller
-            name="interest"
-            control={control}
-            render={({ field }) => <TextField {...field} />}
-          />
-          <Controller
-            name="overlay"
-            control={control}
-            render={({ field }) => <Switch {...field} disabled={numGraphs === 0} />}
-          />
+          <TextField {...register("amount")} />
+          <TextField {...register("term")} />
+          <TextField {...register("interest")} />
+          <Switch {...register("overlay")} disabled={numGraphs === 0} />
+
           <Button variant="contained">{t('form.button.generate')}</Button>
         </Stack>
       </form>
