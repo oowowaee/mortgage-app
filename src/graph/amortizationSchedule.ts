@@ -38,13 +38,13 @@ const calculateInterestPayment = (balance: number, monthlyInterestRate: number) 
 }
 
 export const calculateAmortizationSchedule = (
-  yarlyInterestRate: number,
+  yearlyInterestRate: number,
   loanAmount: number,
   months: number,
   frequency: paymentFrequency,
   payment?: number
 ): amoritizationInformation => {
-  const monthlyInterestRate = yarlyInterestRate / 12;
+  const monthlyInterestRate = yearlyInterestRate / 12;
   const numberOfPayments = months;
   const monthlyPayment = calculateMonthlyPayment(
     loanAmount,

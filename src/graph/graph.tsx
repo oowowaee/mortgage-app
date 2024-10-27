@@ -31,7 +31,6 @@ const legendPlacement = {
 
 export const Graph = ({ amount, term, interest }: GraphProps) => {
   const { t } = useTranslation();
-  console.log(amount, term, interest)
   const schedule = calculateAmortizationSchedule(interest, amount, term * 12, 'monthly');
 
   return (

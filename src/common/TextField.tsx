@@ -1,16 +1,24 @@
 import { default as MuiTextField } from '@mui/material/TextField';
-import { FieldValues } from 'react-hook-form';
+import { Control, FieldValues } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { forwardRef } from 'react';
+import { Controller } from "react-hook-form"
 
-type textFieldProps = FieldValues
+type TextFieldProps = {
+  control: Control<FieldValues>
+  name: string
+}
 
-export const TextField = forwardRef(({ name, ...rest }: textFieldProps, ref) => {
+export const TextField = ({ control, name }: TextFieldProps) => {
   const { t } = useTranslation();
 
   return (
-    <MuiTextField inputRef={ref} label={t(`form.input.${name}.title`)} {...rest} />
+    <Controller
+        name={name}
+        control={control}
+        rules={{ required: true }}
+        render={({ field }) => <MuiTextField {...field} label={t(`form.input.${name}.title`)} />}
+    />
   )
-});
+};
 
 export default TextField;
