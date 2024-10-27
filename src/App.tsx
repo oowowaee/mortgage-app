@@ -9,6 +9,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
 import { CssBaseline } from '@mui/material';
 
+import { StyledEngineProvider } from '@mui/material/styles';
 import { GraphWrapper } from './GraphWrapper';
 import { useTranslation } from 'react-i18next';
 import './i18n';
@@ -62,8 +63,8 @@ const LanguageSelect = () => {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem onClick={() => selectLanguage('es')}>ES</MenuItem>
-        <MenuItem onClick={() => selectLanguage('en')}>EN</MenuItem>
+        <MenuItem selected={i18n.language === 'es'} onClick={() => selectLanguage('es')}>ES</MenuItem>
+        <MenuItem selected={i18n.language === 'en'} onClick={() => selectLanguage('en')}>EN</MenuItem>
       </Menu>
     </>
   );
@@ -73,7 +74,7 @@ function App() {
   const { t } = useTranslation();
 
   return (
-    <>
+    <StyledEngineProvider injectFirst>
       <CssBaseline />
       <AppBar position="static">
         <Toolbar>
@@ -84,7 +85,7 @@ function App() {
         </Toolbar>
       </AppBar>
       <GraphWrapper />
-    </>
+    </StyledEngineProvider>
   )
 }
 

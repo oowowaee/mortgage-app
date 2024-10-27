@@ -3,6 +3,14 @@
   text-align: center;
 }
 
+*:focus {
+  outline: none;
+}
+
+button:focus {
+  outline: none !important;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
