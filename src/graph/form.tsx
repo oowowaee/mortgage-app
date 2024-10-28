@@ -1,4 +1,4 @@
-import { useForm, SubmitHandler, Controller } from "react-hook-form";
+import { useForm, SubmitHandler } from "react-hook-form";
 
 import Box from '@mui/material/Box';
 import TextField from '@/common/TextField';
@@ -7,7 +7,6 @@ import Stack from '@mui/material/Stack';
 import Switch from '@/common/Switch';
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
-import { default as MuiTextField } from '@mui/material/TextField';
 
 import './form.scss'
 import { termUnit } from "./types";
@@ -27,7 +26,6 @@ export type FormData = {
 
 export const GraphForm = ({ defaultValues, regenerateGraph }: FormProps) => {
   const {
-    register,
     handleSubmit,
     getValues,
     control
@@ -45,25 +43,10 @@ export const GraphForm = ({ defaultValues, regenerateGraph }: FormProps) => {
     <Box component="section" className="formWrapper">
       <form onSubmit={handleSubmit(onSubmit)}>
         <Stack direction="column" spacing={2}>
-        <Controller
-            name="amount"
-            control={control}
-            rules={{ required: true }}
-            render={({ field }) => <MuiTextField {...field} label={t(`form.input.${field.name}.title`)} />}
-        />
-        <Controller
-            name="term"
-            control={control}
-            rules={{ required: true }}
-            render={({ field }) => <MuiTextField {...field} label={t(`form.input.${field.name}.title`)} />}
-        />
-        <Controller
-            name="interest"
-            control={control}
-            rules={{ required: true }}
-            render={({ field }) => <MuiTextField {...field} label={t(`form.input.${field.name}.title`)} />}
-        />
-          <Switch {...register("overlay")} disabled={numGraphs === 0} />
+          <TextField name="amount" control={control} />
+          <TextField name="term" control={control} />
+          <TextField name="interest" control={control} />
+          <Switch name="overlay" control={control} disabled={numGraphs === 0} />
 
           <Button type="submit" variant="contained">{t('form.button.generate')}</Button>
         </Stack>
