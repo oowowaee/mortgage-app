@@ -6,14 +6,15 @@ export const translations = {
       },
       graph: {
         label: {
-          principalPaid: 'Principal Paid',
-          interestPaid: 'Interest Paid',
-          principalRemaining: 'Principal Remaining'
-        }
+          principalPaid: "Principal Paid",
+          interestPaid: "Interest Paid",
+          principalRemaining: "Principal Remaining",
+        },
       },
       form: {
         button: {
           generate: "Generate",
+          reset: "Reset",
         },
         input: {
           amount: {
@@ -27,6 +28,9 @@ export const translations = {
           },
           overlay: {
             title: "Overlay existing",
+          },
+          sideBySide: {
+            title: "Side by Side",
           },
         },
       },

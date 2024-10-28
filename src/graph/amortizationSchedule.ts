@@ -1,21 +1,7 @@
 // Can show different payment frequencies
 // Table broken down by year/monthly
 
-import { paymentFrequency } from "./types";
-
-export type paymentDetail = {
-  monthNumber: number;
-  interestPayment: number;
-  principalPayment: number;
-  principalPaid: number;
-  remainingPrincipal: number;
-  interestPaid: number;
-};
-
-type amoritizationInformation = {
-  paymentDetails: paymentDetail[]
-  totalPaid: number
-}
+import { paymentFrequency, paymentDetail, amoritizationInformation } from "./types";
 
 const roundNumber = (number: number) => {
   return Math.round(number * 100) / 100;
@@ -81,6 +67,7 @@ export const calculateAmortizationSchedule = (
   return {
     totalPaid: roundNumber(interestPaid + loanAmount),
     paymentDetails,
+    monthlyPayment: roundNumber(monthlyPayment)
   };
 };
 

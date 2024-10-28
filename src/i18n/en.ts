@@ -14,6 +14,7 @@ export const translations = {
       form: {
         button: {
           generate: "Generate",
+          reset: "Reset",
         },
         input: {
           amount: {
@@ -27,6 +28,9 @@ export const translations = {
           },
           overlay: {
             title: "Overlay existing",
+          },
+          sideBySide: {
+            title: "Side by Side",
           },
         },
       },
