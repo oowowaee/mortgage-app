@@ -5,8 +5,7 @@ import { LineChart } from '@mui/x-charts/LineChart';
 import { useTranslation } from 'react-i18next';
 import { blueberryTwilightPalette } from '@mui/x-charts/colorPalettes';
 import { useState } from "react";
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
-import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@/common/ToggleButtonGroup';
 
 import './form.scss'
 import { termUnit } from "./types.js";
@@ -74,9 +73,14 @@ function getColors(schedules: amoritizationInformation[], index: number): string
   }
 };
 
+const toggleOptions = [
+  { id: 0, label: 'Option 1' },
+  { id: 1, label: 'Option 2' }
+];
+
 export const Graph = ({ graphParameters, numberOfGraphs }: GraphProps) => {
   const { t } = useTranslation();
-  const [highlightedItem, setHighlightedItem] = useState(0);
+  const [highlightedToggleId, setHighlightedToggleId] = useState(toggleOptions[0].id);
 
   const schedules = graphParameters.map(({interest, amount, term }) => {
     return calculateAmortizationSchedule(interest, amount, term * 12, 'monthly');
@@ -104,22 +108,15 @@ export const Graph = ({ graphParameters, numberOfGraphs }: GraphProps) => {
     );
   });
 
-  const colors = getColors(schedules, highlightedItem);
+  const colors = getColors(schedules, highlightedToggleId);
   return (
     <>
       Monthly Payment {schedules[0].monthlyPayment}
       <ToggleButtonGroup
-        value={highlightedItem}
-        exclusive
-        aria-label="highlighted series"
-        fullWidth
-      >
-        {[0, 1].map((type) => (
-          <ToggleButton key={type} onChange={() => setHighlightedItem(type)} selected={highlightedItem === type} value={type} aria-label="left aligned">
-            Series {type}
-          </ToggleButton>
-        ))}
-      </ToggleButtonGroup>
+        toggleOptions={toggleOptions}
+        selectedId={highlightedToggleId}
+        toggleFn={(id: number) => setHighlightedToggleId(id)}
+      />
       <LineChart
         xAxis={[{ data: schedules[0].paymentDetails.map(d => d.monthNumber) }]}
         series={series}
