@@ -37,13 +37,12 @@ export const GraphForm = ({ defaultValues, numberOfGraphs, regenerateGraph }: Fo
     defaultValues
   });
   const { t } = useTranslation();
-
   const onSubmit: SubmitHandler<FormData> = (data) => {
     regenerateGraph(data);
   }
 
   const onReset = () => {
-    reset();
+    reset(defaultValues);
     regenerateGraph(defaultValues);
   }
 
@@ -75,7 +74,7 @@ export const GraphForm = ({ defaultValues, numberOfGraphs, regenerateGraph }: Fo
               render={({ field }) => (
                 <FormControlLabel
                   control={
-                    <MuiSwitch disabled={numberOfGraphs > 1} {...field} />
+                    <MuiSwitch disabled={numberOfGraphs > 1} checked={field.value ?? false} {...field} />
                   }
                   label={t(`form.input.${field.name}.title`)}
                 />
@@ -87,7 +86,7 @@ export const GraphForm = ({ defaultValues, numberOfGraphs, regenerateGraph }: Fo
               render={({ field }) => (
                 <FormControlLabel
                   control={
-                    <MuiSwitch disabled {...field} />
+                    <MuiSwitch disabled checked={field.value ?? false} {...field} />
                   }
                   label={t(`form.input.${field.name}.title`)}
                 />
